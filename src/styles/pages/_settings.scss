@@ -1,0 +1,203 @@
+/* --- Variablen für die Settings-Seite --- */
+$color-yellow: #e2e85a; // Das Gelb aus deinem Design
+$color-text: #333333;
+$color-bg-preview: #efebe6; // Das Beige/Grau der rechten Box
+$color-bg-footer: #f7f6f4;
+
+.settings {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    color: $color-text;
+
+    /* Überschrift mit der gelben Linie und Raute */
+    &__title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 3rem;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 10px; // Platz für die Raute lassen
+            width: calc(100% - 10px);
+            height: 3px;
+            background-color: $color-yellow;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            background-color: $color-yellow;
+            transform: rotate(45deg);
+        }
+    }
+
+    /* 2-Spalten Layout (Flexbox) */
+    &__content-wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: 4rem;
+        align-items: flex-start;
+    }
+
+    &__options {
+        flex: 0 0 350px; // Feste Breite für die linke Spalte
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    &__preview {
+        flex: 1;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 400px;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    /* Formular-Gruppen & Überschriften */
+    &__group {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__legend {
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    /* Custom Radio Buttons */
+    /* Custom Radio Buttons */
+    &__radio {
+        margin-bottom: 0.75rem;
+        padding-left: 2.5rem; // Abstand zwischen Kreis und Text
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        label {
+            display: inline-flex; // Passt die Breite exakt an den Inhalt an
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: #555;
+
+            /* Äußerer Kreis (1. Flex-Element) */
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+                border: 2px solid $color-text;
+                border-radius: 50%;
+                box-sizing: border-box;
+                transition: all 0.2s ease;
+                flex-shrink: 0;
+            }
+        }
+
+        /* Styling bei aktiver Auswahl */
+        input[type="radio"]:checked+label {
+            font-weight: 700;
+            color: $color-text;
+
+            &::before {
+                border: 6px solid $color-text;
+            }
+
+            /* Gelber Pfeil (3. Flex-Element direkt nach dem Text) */
+            &::after {
+                content: '';
+                display: inline-block;
+                width: 40px;
+                height: 20px;
+                margin-left: 0.5rem; // Abstand direkt zum Text
+                flex-shrink: 0;
+                background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5H35' stroke='%23e2e85a' stroke-width='2'/%3E%3Crect x='32' y='1' width='8' height='8' transform='rotate(45 32 1)' fill='%23e2e85a'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left center;
+            }
+        }
+    }
+
+    /* Footer Bereich (Zusammenfassung & Start) */
+    &__footer {
+        background-color: $color-bg-footer;
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2rem;
+        margin-top: 3rem;
+        margin-left: 20rem;
+    }
+
+    &__summary {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.1rem;
+        color: #666;
+        margin: 0;
+    }
+
+    /* Die gelben, schrägen Trennstriche im Footer */
+    &__slash {
+        color: $color-yellow;
+        font-weight: 800;
+        font-size: 2em;
+        font-style: italic;
+    }
+
+    &__submit-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+
+        /* Wenn der Button deaktiviert ist (noch nicht alle 3 Optionen gewählt) */
+        &:disabled {
+            opacity: 0.4;
+            filter: grayscale(100%);
+            cursor: not-allowed;
+        }
+
+        /* Hover-Animation nur, wenn der Button aktiv ist */
+        &:not(:disabled):hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            display: block;
+            height: 50px;
+        }
+    }
+}
