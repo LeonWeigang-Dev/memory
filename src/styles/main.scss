@@ -1,8 +1,14 @@
+@use "components/button";
+@use "pages/home";
+
+
+
 body {
     height: 100vh;
+    margin: 0;
 }
 
-.card {
+/* .card {
     height: 100px;
     aspect-ratio: 1 / 1;
     background-color: transparent;
@@ -33,4 +39,4 @@ body {
     &.is-flipped .card__inner{
         transform: rotateY(180deg);
     }
-}
+} */

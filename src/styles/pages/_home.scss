@@ -1,0 +1,72 @@
+.home-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0px;
+    background-color: #303131; // Platzhalter für dein Theme aus Figma
+    color: #ffffff;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    &__logo {
+        margin: 0;
+        padding: 0;
+    }
+
+    &__controller-icon {
+        position: absolute;
+        top: 800px;
+        left: 0px;
+        bottom: 10px;
+        transform: translate(0%, 0%);
+        width: 250px; // Größe ggf. an dein Icon anpassen
+        height: auto;
+    }
+
+    &__controller-icon:hover {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    &__text {
+        text-align: left;
+        justify-content: center;
+        flex-direction: column;
+        width: fit-content;
+        display: flex;
+    }
+
+    &__title {
+        font-size: 4rem;
+        margin-bottom: 0.15rem;
+        margin-top: 0.15rem;
+    }
+
+    &__subtitle {
+        align-items: end;
+        justify-content: end;
+        font-size: 1.5rem;
+        margin-bottom: 0.15rem;
+    }
+}
+
+/* Definition der Floating-Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

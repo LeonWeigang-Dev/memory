@@ -1,0 +1,36 @@
+.start-btn {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    /* transition: transform 0.2s ease-in-out; */
+
+    &:hover {
+        transform: scale(1.05);
+
+        .start-btn__img--default {
+            opacity: 0;
+        }
+
+        .start-btn__img--hover {
+            opacity: 1;
+        }
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &__img {
+        display: block;
+        max-width: 250px; // Passe die Breite an deine Bildgröße an
+        height: auto;
+        /* transition: opacity 0.2s ease-in-out; */
+
+        &--hover {
+            position: absolute;
+            inset: 0; // Setzt top, left, right, bottom auf 0, um exakt über dem ersten Bild zu liegen
+            opacity: 0;
+        }
+    }
+}
