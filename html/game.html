@@ -4,51 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/public/icons/memory-favicon.png">
+    <link rel="icon" type="image/x-icon" href="/icons/memory-favicon.png">
     <title>Memory | Game</title>
     <link rel="stylesheet" href="/src/styles/main.scss">
 </head>
-<!-- Teste hier die Themes durch Wechsel der Klasse: 'theme-code-vibes' ODER 'theme-foods' -->
 
-<body class="theme-code-vibes" id="game-body">
+<body id="game-body">
 
     <main class="game">
         <header class="game__header">
             <!-- Linker Bereich: Punkte -->
             <div class="game__score">
                 <div class="game__score-player">
-                    <!-- Platzhalter Icons: Tausche src mit deinen Figma-SVGs aus -->
-                    <img src="/public/icons/code-vibes-theme/player-label-blue.png" alt="" class="game__icon">
-                    <span class="game__name">Blue</span>
-                    <span class="game__points">0</span>
+                    <img src="" alt="" class="game__icon" id="player-1-icon">
+                    <span class="game__name game__blue">Blue</span>
+                    <span class="game__points game__blue" id="p1-points">0</span>
                 </div>
                 <div class="game__score-player">
-                    <img src="/public/icons/code-vibes-theme/player-label-orange.png" alt="" class="game__icon">
-                    <span class="game__name">Orange</span>
-                    <span class="game__points">6</span>
+                    <img src="" alt="" class="game__icon" id="player-2-icon">
+                    <span class="game__name game__orange">Orange</span>
+                    <span class="game__points game__orange" id="p2-points">0</span>
                 </div>
             </div>
 
             <!-- Mittlerer Bereich: Aktueller Spieler -->
             <div class="game__current">
-                Current player: <img src="/public/icons/code-vibes-theme/player-label-blue.png" alt="" class="game__icon"
-                    id="current-player-icon">
+                Current player: <img src="" alt="" class="game__icon" id="current-player-icon">
             </div>
 
             <!-- Rechter Bereich: Exit Button -->
             <button class="game__exit-btn" id="btn-show-exit">
-                <img src="/public/icons/code-vibes-theme/codeTheme-exit-btn.png" alt="" class="game__icon">
+                <img src="" alt="" class="game__icon" id="exit-icon">
             </button>
         </header>
 
         <!-- Das Grid für die Karten -->
-        <section id="game-grid" class="game__grid">
-            <!-- Platzhalter-Karten (werden später via TS generiert) -->
-            <div class="game__card"><img src="/public/icons/code-icon.svg" alt=""></div>
-            <div class="game__card"><img src="/public/icons/code-icon.svg" alt=""></div>
-            <div class="game__card"><img src="/public/icons/code-icon.svg" alt=""></div>
-            <div class="game__card"><img src="/public/icons/code-icon.svg" alt=""></div>
-        </section>
+        <section id="game-grid" class="game__grid"></section>
     </main>
 
     <!-- Der Exit Game Dialog -->

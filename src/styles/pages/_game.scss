@@ -43,8 +43,8 @@
         display: flex;
         align-items: center;
         gap: 0.75rem;
+        padding: 0;
         border: none !important;
-        padding: 0.6rem 1.2rem;
         border-radius: 8px;
         font-weight: 700;
         cursor: pointer;
@@ -71,22 +71,84 @@
         max-width: 500px;
     }
 
+    /* --- 3D Flip Karten-Struktur --- */
     &__card {
         aspect-ratio: 1 / 1;
         cursor: pointer;
-        border-radius: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background-color: transparent;
+        border: none;
+        perspective: 1000px;
+        position: relative;
         transition: transform 0.2s;
 
         &:hover {
             transform: scale(1.05);
         }
 
-        img {
-            width: 40%;
-            opacity: 0.4;
+        &__inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 300ms ease-in-out;
+        }
+
+        &__face {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+
+            &--back {
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            &--front {
+                transform: rotateY(180deg);
+            }
+        }
+
+        &.is-flipped &__inner,
+        &.matched &__inner {
+            transform: rotateY(180deg);
+        }
+
+        &-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15%;
+            object-fit: contain;
+        }
+    }
+
+    &__over-screen {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 4rem 2rem;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+            font-weight: 700;
         }
     }
 }
@@ -100,7 +162,7 @@
     width: 90%;
     text-align: center;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    margin: auto; // Zentriert den Dialog nativ
+    margin: auto;
 
     &::backdrop {
         background: rgba(0, 0, 0, 0.6);
@@ -133,19 +195,29 @@
     }
 }
 
-
 /* ==========================================
    THEME 1: CODE VIBES (Dunkel / Grün)
    ========================================== */
 body.theme-code-vibes {
-    background-color: #333538; // Dunkelgrau
+    background-color: #333538;
     color: #ffffff;
     font-family: sans-serif;
 
     .game {
+        &__card &__face--back {
+            background-image: url('../assets/images/codeTheme-card-backface.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        &__card &__face--front {
+            background: linear-gradient(135deg, #64cbb0 0%, #46a88d 100%);
+        }
+
         &__header {
             background-color: transparent;
-            padding: 0; // Kein Hintergrund-Kasten
+            padding: 0;
         }
 
         &__score {
@@ -158,8 +230,12 @@ body.theme-code-vibes {
             color: #ffffff;
         }
 
-        &__card {
-            background: linear-gradient(135deg, #64cbb0 0%, #46a88d 100%);
+        &__orange {
+            color: #F58E39;
+        }
+
+        &__blue {
+            color: #2BB1FF;
         }
     }
 
@@ -187,23 +263,32 @@ body.theme-code-vibes {
    ========================================== */
 body.theme-foods {
     background-color: #ffffff;
-    color: #935323; // Braunton für Text
-    /* Marker/Handwriting Font Mockup */
+    color: #935323;
     font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
 
     .game {
+        &__card &__face--back {
+            background-image: url('../assets/images/food-theme-card.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        &__card &__face--front {
+            background-color: #f2903d;
+        }
+
         &__header {
-            background-color: #f2e4d6; // Beiger Kasten
+            background-color: #f2e4d6;
         }
 
         &__score {
             background-color: #ffffff;
-            /* Dreht die Reihenfolge um, falls Orange links sein soll */
             flex-direction: row-reverse;
         }
 
         &__name {
-            display: none; // Versteckt das Wort "Blue" / "Orange"
+            display: none;
         }
 
         &__exit-btn {
@@ -212,10 +297,6 @@ body.theme-foods {
             color: #f2903d;
             text-transform: uppercase;
         }
-
-        &__card {
-            background-color: #f2903d;
-        }
     }
 
     .dialog {
@@ -223,12 +304,12 @@ body.theme-foods {
         color: #935323;
 
         &__text {
-            font-weight: normal; // Wirkt im Screenshot handgeschrieben
+            font-weight: normal;
         }
 
         &__btn {
             text-transform: uppercase;
-            border-radius: 12px; // Etwas runder
+            border-radius: 12px;
         }
 
         &__btn--primary {
@@ -236,7 +317,6 @@ body.theme-foods {
             color: #ffffff;
             border: 2px solid #e88628;
 
-            /* CSS Trick: Fügt "NO, " vor "Back to game" ein */
             .dialog__btn-text::before {
                 content: "NO, ";
             }
