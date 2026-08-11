@@ -4,19 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/public/icons/memory-favicon.png">
     <title>Memory | Game</title>
+    <link rel="stylesheet" href="/src/styles/main.scss">
 </head>
+<!-- Teste hier die Themes durch Wechsel der Klasse: 'theme-code-vibes' ODER 'theme-foods' -->
 
-<body>
+<body class="theme-code-vibes" id="game-body">
 
-    <section id="field">
-        <button class="card">
-            <div class="card__inner">
-                <div class="card__face"></div>
-                <div class="card__face card__face--back"></div>
+    <main class="game">
+        <header class="game__header">
+            <!-- Linker Bereich: Punkte -->
+            <div class="game__score">
+                <div class="game__score-player">
+                    <!-- Platzhalter Icons: Tausche src mit deinen Figma-SVGs aus -->
+                    <img src="/public/icons/code-vibes-theme/player-label-blue.png" alt="" class="game__icon">
+                    <span class="game__name">Blue</span>
+                    <span class="game__points">0</span>
+                </div>
+                <div class="game__score-player">
+                    <img src="/public/icons/code-vibes-theme/player-label-orange.png" alt="" class="game__icon">
+                    <span class="game__name">Orange</span>
+                    <span class="game__points">6</span>
+                </div>
             </div>
-        </button>
-    </section>
+
+            <!-- Mittlerer Bereich: Aktueller Spieler -->
+            <div class="game__current">
+                Current player: <img src="/public/icons/code-vibes-theme/player-label-blue.png" alt="" class="game__icon"
+                    id="current-player-icon">
+            </div>
+
+            <!-- Rechter Bereich: Exit Button -->
+            <button class="game__exit-btn" id="btn-show-exit">
+                <img src="/public/icons/code-vibes-theme/codeTheme-exit-btn.png" alt="" class="game__icon">
+            </button>
+        </header>
+
+        <!-- Das Grid für die Karten -->
+        <section id="game-grid" class="game__grid">
+            <!-- Platzhalter-Karten (werden später via TS generiert) -->
+            <div class="game__card"><img src="/public/icons/code-icon.svg" alt=""></div>
+            <div class="game__card"><img src="/public/icons/code-icon.svg" alt=""></div>
+            <div class="game__card"><img src="/public/icons/code-icon.svg" alt=""></div>
+            <div class="game__card"><img src="/public/icons/code-icon.svg" alt=""></div>
+        </section>
+    </main>
+
+    <!-- Der Exit Game Dialog -->
+    <dialog id="exit-dialog" class="dialog">
+        <div class="dialog__content">
+            <p class="dialog__text">Are you sure you want to quit the game?</p>
+            <div class="dialog__actions">
+                <button class="dialog__btn dialog__btn--primary" id="btn-resume">
+                    <span class="dialog__btn-text">Back to game</span>
+                </button>
+                <button class="dialog__btn dialog__btn--secondary" id="btn-exit">
+                    Exit game
+                </button>
+            </div>
+        </div>
+    </dialog>
 
     <script type="module" src="/src/main.ts"></script>
 </body>
