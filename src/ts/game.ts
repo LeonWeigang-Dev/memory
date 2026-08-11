@@ -105,7 +105,7 @@ function loadSettings(): GameSettings | null {
  * Leitet den Nutzer zur Settings-Seite zurück, falls keine Settings vorhanden sind.
  */
 function redirectToMenu(): void {
-    window.location.href = "./index.html";
+    window.location.href = "../index.html";
 }
 
 /**
