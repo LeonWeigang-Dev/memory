@@ -11,6 +11,9 @@ if (document.getElementById("settings-form")) {
     initGame();
 }
 
+/**
+ * Initialisiert die Event-Listener für das Spiel.
+ */
 function init() {
     const fieldRef = document.getElementById("field");
     if (fieldRef) {

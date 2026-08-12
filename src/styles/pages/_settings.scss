@@ -4,11 +4,36 @@ $color-text: #333333;
 $color-bg-preview: #efebe6;
 $color-bg-footer: #f7f6f4;
 
+
+/* 
+.theme-card {
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    opacity: 1;
+    /* Standard: leicht dezent */
+
+/* &:hover,
+    &:has(input[type="radio"]:checked) {
+        transform: translateY(-3px);
+        opacity: 1;
+    }
+}
+
+input[type="radio"]:checked+.theme-label,
+.theme-label:hover {
+    transform: translateY(-3px);
+    opacity: 1;
+}
+ */
+
 .settings {
     max-width: 1000px;
     margin: 0 auto;
     padding: 3rem 2rem;
     color: $color-text;
+    font-family: "Red Rose", sans-serif;
 
     &__title {
         font-size: 2.5rem;
@@ -102,6 +127,7 @@ $color-bg-footer: #f7f6f4;
             font-size: 1.1rem;
             cursor: pointer;
             color: #555;
+            transition: color 0.2s ease, font-weight 0.2s ease;
 
             &::before {
                 content: '';
@@ -111,12 +137,13 @@ $color-bg-footer: #f7f6f4;
                 border: 2px solid $color-text;
                 border-radius: 50%;
                 box-sizing: border-box;
-                transition: all 0.2s ease;
+                transition: border 0.2s ease;
                 flex-shrink: 0;
             }
         }
 
-        input[type="radio"]:checked+label {
+        input[type="radio"]:checked+label,
+        label:hover {
             font-weight: 700;
             color: $color-text;
 

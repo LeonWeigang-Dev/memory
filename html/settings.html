@@ -16,26 +16,23 @@
 
         <form id="settings-form" class="settings__form">
 
-            <!-- NEU: Wrapper für das 2-Spalten Layout (Links Optionen, Rechts Vorschau) -->
             <div class="settings__content-wrapper">
 
                 <section class="settings__options">
-                    <!-- Auswahl: Themes (mit Zusatzklasse für den gelben Pfeil) -->
                     <fieldset class="settings__group settings__group--themes">
                         <legend class="settings__legend">
                             <img src="/icons/setting-theme-icon.png" alt="" aria-hidden="true"> Game themes
                         </legend>
                         <div class="settings__radio">
                             <input type="radio" id="theme-code" name="theme" value="code-vibes" checked>
-                            <label for="theme-code">Code vibes theme</label>
+                            <label class="theme-card" for="theme-code">Code vibes theme</label>
                         </div>
                         <div class="settings__radio">
                             <input type="radio" id="theme-food" name="theme" value="foods">
-                            <label for="theme-food">Food theme</label>
+                            <label class="theme-card" for="theme-food">Food theme</label>
                         </div>
                     </fieldset>
 
-                    <!-- Auswahl: Spielerfarbe -->
                     <fieldset class="settings__group">
                         <legend class="settings__legend">
                             <img src="/icons/setting-player-icon.png" alt="" aria-hidden="true"> Choose player
@@ -50,7 +47,6 @@
                         </div>
                     </fieldset>
 
-                    <!-- Auswahl: Spielfeldgröße -->
                     <fieldset class="settings__group">
                         <legend class="settings__legend">
                             <img src="/icons/setting-board-icon.png" alt="" aria-hidden="true"> Board size
@@ -70,14 +66,12 @@
                     </fieldset>
                 </section>
 
-                <!-- Rechte Seite: Vorschau-Bild -->
                 <aside class="settings__preview">
                     <img src="/imgs/preview-code-vibes.png" id="theme-preview-img" alt="Theme Preview">
                 </aside>
 
-            </div> <!-- Ende Wrapper -->
+            </div>
 
-            <!-- Footer: Zusammenfassung & Start-Button -->
             <footer class="settings__footer">
                 <p class="settings__summary">
                     <span id="summary-theme">Game theme</span> <span class="settings__slash">/</span>

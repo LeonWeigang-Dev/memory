@@ -393,5 +393,4 @@ export function initExitDialog(): void {
     exitBtn.addEventListener("click", () => redirectToMenu());
 }
 
-// Startet das Spiel
 document.addEventListener("DOMContentLoaded", initGame);

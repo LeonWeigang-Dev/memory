@@ -5,6 +5,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
 
     &__header {
         display: flex;
@@ -36,6 +37,7 @@
         gap: 0.5rem;
         font-size: 1.25rem;
         font-weight: 500;
+        font-family: "Red Rose", sans-serif !important;
     }
 
     &__exit-btn {
@@ -159,6 +161,7 @@
     text-align: center;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     margin: auto;
+    font-family: "Red Rose", sans-serif;
 
     &::backdrop {
         background: rgba(0, 0, 0, 0.6);
