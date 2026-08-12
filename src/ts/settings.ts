@@ -18,7 +18,7 @@ export function initSettings(): void {
         // 2. Vorschau-Bild austauschen
         // WICHTIG: Dein zweites Bild muss im Ordner /public/imgs/ genau "preview-foods.png" heißen!
         if (theme) {
-            previewImg.src = `/public/imgs/preview-${theme}.png`;
+            previewImg.src = `/imgs/preview-${theme}.png`;
         }
 
         // 3. Texte im Footer updaten

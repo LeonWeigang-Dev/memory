@@ -1,7 +1,7 @@
 /* --- Variablen für die Settings-Seite --- */
-$color-yellow: #e2e85a; // Das Gelb aus deinem Design
+$color-yellow: #e2e85a;
 $color-text: #333333;
-$color-bg-preview: #efebe6; // Das Beige/Grau der rechten Box
+$color-bg-preview: #efebe6;
 $color-bg-footer: #f7f6f4;
 
 .settings {
@@ -10,7 +10,6 @@ $color-bg-footer: #f7f6f4;
     padding: 3rem 2rem;
     color: $color-text;
 
-    /* Überschrift mit der gelben Linie und Raute */
     &__title {
         font-size: 2.5rem;
         font-weight: 800;
@@ -22,7 +21,7 @@ $color-bg-footer: #f7f6f4;
             content: '';
             position: absolute;
             bottom: -8px;
-            left: 10px; // Platz für die Raute lassen
+            left: 10px;
             width: calc(100% - 10px);
             height: 3px;
             background-color: $color-yellow;
@@ -40,7 +39,6 @@ $color-bg-footer: #f7f6f4;
         }
     }
 
-    /* 2-Spalten Layout (Flexbox) */
     &__content-wrapper {
         display: flex;
         justify-content: space-between;
@@ -49,7 +47,7 @@ $color-bg-footer: #f7f6f4;
     }
 
     &__options {
-        flex: 0 0 350px; // Feste Breite für die linke Spalte
+        flex: 0 0 350px;
         display: flex;
         flex-direction: column;
         gap: 2.5rem;
@@ -69,7 +67,6 @@ $color-bg-footer: #f7f6f4;
         }
     }
 
-    /* Formular-Gruppen & Überschriften */
     &__group {
         border: none;
         padding: 0;
@@ -90,25 +87,22 @@ $color-bg-footer: #f7f6f4;
         }
     }
 
-    /* Custom Radio Buttons */
-    /* Custom Radio Buttons */
     &__radio {
         margin-bottom: 0.75rem;
-        padding-left: 2.5rem; // Abstand zwischen Kreis und Text
+        padding-left: 2.5rem;
 
         input[type="radio"] {
             display: none;
         }
 
         label {
-            display: inline-flex; // Passt die Breite exakt an den Inhalt an
+            display: inline-flex;
             align-items: center;
             gap: 0.75rem;
             font-size: 1.1rem;
             cursor: pointer;
             color: #555;
 
-            /* Äußerer Kreis (1. Flex-Element) */
             &::before {
                 content: '';
                 display: inline-block;
@@ -122,7 +116,6 @@ $color-bg-footer: #f7f6f4;
             }
         }
 
-        /* Styling bei aktiver Auswahl */
         input[type="radio"]:checked+label {
             font-weight: 700;
             color: $color-text;
@@ -131,13 +124,12 @@ $color-bg-footer: #f7f6f4;
                 border: 6px solid $color-text;
             }
 
-            /* Gelber Pfeil (3. Flex-Element direkt nach dem Text) */
             &::after {
                 content: '';
                 display: inline-block;
                 width: 40px;
                 height: 20px;
-                margin-left: 0.5rem; // Abstand direkt zum Text
+                margin-left: 0.5rem;
                 flex-shrink: 0;
                 background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5H35' stroke='%23e2e85a' stroke-width='2'/%3E%3Crect x='32' y='1' width='8' height='8' transform='rotate(45 32 1)' fill='%23e2e85a'/%3E%3C/svg%3E");
                 background-repeat: no-repeat;
@@ -146,7 +138,6 @@ $color-bg-footer: #f7f6f4;
         }
     }
 
-    /* Footer Bereich (Zusammenfassung & Start) */
     &__footer {
         background-color: $color-bg-footer;
         border-radius: 8px;
@@ -168,7 +159,6 @@ $color-bg-footer: #f7f6f4;
         margin: 0;
     }
 
-    /* Die gelben, schrägen Trennstriche im Footer */
     &__slash {
         color: $color-yellow;
         font-weight: 800;
@@ -183,14 +173,12 @@ $color-bg-footer: #f7f6f4;
         cursor: pointer;
         transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
 
-        /* Wenn der Button deaktiviert ist (noch nicht alle 3 Optionen gewählt) */
         &:disabled {
             opacity: 0.4;
             filter: grayscale(100%);
             cursor: not-allowed;
         }
 
-        /* Hover-Animation nur, wenn der Button aktiv ist */
         &:not(:disabled):hover {
             transform: scale(1.05);
         }

@@ -3,7 +3,6 @@
     position: relative;
     cursor: pointer;
     text-decoration: none;
-    /* transition: transform 0.2s ease-in-out; */
 
     &:hover {
         transform: scale(1.05);
@@ -23,13 +22,12 @@
 
     &__img {
         display: block;
-        max-width: 250px; // Passe die Breite an deine Bildgröße an
+        max-width: 250px;
         height: auto;
-        /* transition: opacity 0.2s ease-in-out; */
 
         &--hover {
             position: absolute;
-            inset: 0; // Setzt top, left, right, bottom auf 0, um exakt über dem ersten Bild zu liegen
+            inset: 0; 
             opacity: 0;
         }
     }

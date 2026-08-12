@@ -147,9 +147,9 @@ function updateHeaderIcons(isFood: boolean): void {
 
     if (!p1Icon || !p2Icon || !exitIcon) return;
 
-    p1Icon.src = isFood ? "/public/icons/food-theme/chess_player-label-blue.png" : "/public/icons/code-vibes-theme/player-label-blue.png";
-    p2Icon.src = isFood ? "/public/icons/food-theme/chess_player-label-orange.png" : "/public/icons/code-vibes-theme/player-label-orange.png";
-    exitIcon.src = isFood ? "/public/icons/food-theme/foodTheme-exit-btn.png" : "/public/icons/code-vibes-theme/codeTheme-exit-btn.png";
+    p1Icon.src = isFood ? "/icons/food-theme/chess_player-label-blue.png" : "/icons/code-vibes-theme/player-label-blue.png";
+    p2Icon.src = isFood ? "/icons/food-theme/chess_player-label-orange.png" : "/icons/code-vibes-theme/player-label-orange.png";
+    exitIcon.src = isFood ? "/icons/food-theme/foodTheme-exit-btn.png" : "/icons/code-vibes-theme/codeTheme-exit-btn.png";
     updateCurrentPlayerUI();
 }
 
@@ -162,8 +162,8 @@ function updateCurrentPlayerUI(): void {
 
     const isFood = currentTheme === "foods";
     currIcon.src = currentPlayer === 1
-        ? (isFood ? "/public/icons/food-theme/chess_player-label-blue.png" : "/public/icons/code-vibes-theme/player-label-blue.png")
-        : (isFood ? "/public/icons/food-theme/chess_player-label-orange.png" : "/public/icons/code-vibes-theme/player-label-orange.png");
+        ? (isFood ? "/icons/food-theme/chess_player-label-blue.png" : "/icons/code-vibes-theme/player-label-blue.png")
+        : (isFood ? "/icons/food-theme/chess_player-label-orange.png" : "/icons/code-vibes-theme/player-label-orange.png");
 }
 
 /**

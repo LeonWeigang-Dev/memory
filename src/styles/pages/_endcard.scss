@@ -1,6 +1,4 @@
-/* ==========================================
-   ENDSCREEN OVERLAY BASICS
-   ========================================== */
+
 .end-overlay {
     position: fixed;
     top: 0;
@@ -14,9 +12,7 @@
     opacity: 0;
     transition: opacity 2s ease-in-out;
     overflow: hidden;
-    /* Der 2 Sekunden Fade-In */
     pointer-events: none;
-    /* Blockiert Klicks während des Fadens */
 
     &.is-visible {
         opacity: 1;
@@ -103,11 +99,8 @@
     height: 500px;
 }
 
-/* ==========================================
-   THEME 1: CODE VIBES (Dunkel / Teal)
-   ========================================== */
 body.theme-code-vibes .end-overlay {
-    background-color: #333333; // Dunkelgrau aus Screenshot
+    background-color: #333333;
     color: #ffffff;
     overflow: hidden;
 
@@ -155,22 +148,18 @@ body.theme-code-vibes .end-overlay {
         left: 0;
         width: 100%;
         height: 30%;
-        background-image: url('/public/icons/code-vibes-theme/normal-confetti.png'); // Dein Confetti-Bild
+        background-image: url('/icons/code-vibes-theme/normal-confetti.png');
         background-size: cover;
     }
 }
 
-/* ==========================================
-   THEME 2: FOODS (Orange / Hell)
-   ========================================== */
 body.theme-foods .end-overlay {
-    background-color: #f2903d; // Orange aus Game-Over Screenshot
+    background-color: #f2903d;
     color: #ffffff;
 
-    /* Für Phase 2 wird der Hintergrund hell! */
     &.phase-2-active {
-        background-color: #f7f7f7; // Helles Beige
-        color: #8b5a2b; // Braun für Text
+        background-color: #f7f7f7;
+        color: #8b5a2b;
     }
 
     .end-title-gameover {
@@ -196,12 +185,12 @@ body.theme-foods .end-overlay {
         font-weight: 300;
 
         &.draw-title {
-            color: #f2903d; // Orange für das Wort DRAW
+            color: #f2903d;
         }
     }
 
     .winner-icon-wrapper {
-        background-color: #f3e5d8; // Das Beige Viereck
+        background-color: #f3e5d8;
         padding: 2rem;
     }
 
@@ -210,10 +199,10 @@ body.theme-foods .end-overlay {
         border: none;
         color: #ffffff;
         padding: 0.5rem 2rem;
-        border-radius: 10px; // Abgerundet
+        border-radius: 10px;
     }
 
     .confetti-bg {
-        display: none; // Kein Confetti im Food Theme
+        display: none;
     }
 }

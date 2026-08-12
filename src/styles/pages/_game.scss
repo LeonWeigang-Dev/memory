@@ -1,4 +1,3 @@
-/* --- Basis-Struktur (Gilt für beide Themes) --- */
 .game {
     max-width: 1000px;
     margin: 0 auto;
@@ -66,12 +65,10 @@
         width: 100%;
         justify-content: center;
 
-        /* Basis für 4x4 Grid */
         grid-template-columns: repeat(4, 1fr);
         max-width: 500px;
     }
 
-    /* --- 3D Flip Karten-Struktur --- */
     &__card {
         aspect-ratio: 1 / 1;
         cursor: pointer;
@@ -153,7 +150,6 @@
     }
 }
 
-/* --- Dialog Basis --- */
 .dialog {
     border: none;
     border-radius: 16px;
