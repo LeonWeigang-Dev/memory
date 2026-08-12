@@ -1,5 +1,5 @@
 // @ts-ignore: side-effect import of SCSS file without type declarations
-import './styles/main.scss';
+/* import './styles/main.scss'; */
 import { initSettings } from './ts/settings';
 import { initGame } from './ts/game';
 
