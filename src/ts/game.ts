@@ -186,9 +186,7 @@ function setupBoard(gridElement: HTMLElement, size: number): void {
  */
 function generateCardIcons(size: number): string[] {
     const assets = getCurrentThemeAssets();
-    // Nimm nur so viele einzigartige Icons, wie für die Board-Größe benötigt werden (Hälfte der Boardgröße)
     const baseIcons = assets.icons.slice(0, size / 2);
-    // Paare bilden und mischen
     return [...baseIcons, ...baseIcons].sort(() => Math.random() - 0.5);
 }
 
@@ -239,7 +237,6 @@ function renderCards(grid: HTMLElement, icons: string[]): void {
  * @param card - Das angeklickte Karten-Element.
  */
 function handleCardClick(card: HTMLElement): void {
-    // Verhindere Klicks während der Prüfung oder auf bereits aufgedeckte/gelöste Karten
     if (isChecking || card.classList.contains("is-flipped") || card.classList.contains("matched")) return;
 
     flipCard(card);
@@ -252,7 +249,6 @@ function handleCardClick(card: HTMLElement): void {
  */
 function flipCard(card: HTMLElement): void {
     card.classList.add("is-flipped");
-    // innerHTML darf hier nicht angerührt werden, da sonst die Bilder gelöscht werden!
 }
 
 /**

@@ -5,7 +5,6 @@ import { initGame } from './ts/game';
 
 init();
 initSettings();
-// Checke anhand der URL oder an vorhandenen IDs, wo wir uns befinden
 if (document.getElementById("settings-form")) {
     initSettings();
 } else if (document.getElementById("game-grid")) {
