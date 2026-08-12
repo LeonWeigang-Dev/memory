@@ -57,6 +57,40 @@
         </div>
     </dialog>
 
+
+
+    <!-- ENDSCREEN OVERLAY -->
+<div id="end-overlay" class="end-overlay hidden">
+    
+    <!-- PHASE 1: Game Over & Scores -->
+    <div id="end-phase-1" class="end-phase">
+        <h1 class="end-title-gameover">GAME OVER</h1>
+        <div class="score-container">
+            <p>Final score</p>
+            <div class="score-box">
+                <!-- Die Icons hier kannst du später mit deinen echten Pfaden anpassen -->
+                <span class="score-player"><img src="/public/icons/code-vibes-theme/player-label-blue.png" id="end-p1-icon" alt="P1"> <span id="final-score-p1">0</span></span>
+                <span class="score-player"><img src="/public/icons/code-vibes-theme/player-label-orange.png" id="end-p2-icon" alt="P2"> <span id="final-score-p2">0</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHASE 2: Winner / Draw -->
+    <div id="end-phase-2" class="end-phase hidden">
+        <div id="confetti-bg" class="confetti-bg"></div> <!-- Wird nur im Code-Theme genutzt -->
+        
+        <p id="winner-subtitle" class="winner-subtitle">The winner is</p>
+        <h1 id="winner-title" class="winner-title">ORANGE PLAYER</h1>
+        
+        <div class="winner-icon-wrapper">
+            <img id="winner-icon" class="winner-icon-img" src="" alt="Winner / Draw Icon">
+        </div>
+        
+        <button id="btn-home" class="btn-home">Home</button>
+    </div>
+
+</div>
+
     <script type="module" src="/src/main.ts"></script>
 </body>
 

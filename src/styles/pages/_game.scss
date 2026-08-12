@@ -220,6 +220,11 @@ body.theme-code-vibes {
             padding: 0;
         }
 
+        &__card.matched &__face--front {
+            border: 4px solid #64cbb0 !important;
+            box-shadow: 0 0 15px rgba(100, 203, 176, 0.4);
+        }
+
         &__score {
             background-color: #434c50;
         }
@@ -276,6 +281,11 @@ body.theme-foods {
 
         &__card &__face--front {
             background-color: #f2903d;
+        }
+
+        &__card.matched &__face--front {
+            border: 4px solid #f2903d !important;
+            box-shadow: 0 0 15px rgba(242, 144, 61, 0.4);
         }
 
         &__header {

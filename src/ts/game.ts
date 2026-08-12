@@ -341,37 +341,44 @@ function updateScoreUI(): void {
 function checkGameOver(): void {
     matchedPairs++;
     if (matchedPairs === totalPairsNeeded) {
-        setTimeout(showGameOverScreen, 1500);
+        setTimeout(startEndSequence, 500);
     }
 }
 
 /**
- * Zeigt den Game-Over-Bildschirm mit Endergebnis an.
+ * Startet Phase 1: Den Game Over Screen mit Fade-In
  */
-function showGameOverScreen(): void {
-    const grid = document.getElementById("game-grid");
-    if (!grid) return;
+function startEndSequence(): void {
+    const el = (id: string) => document.getElementById(id) as any;
+    if (!el("end-overlay")) return;
 
-    grid.innerHTML = `
-        <div class="game__over-screen">
-            <h2>Game Over!</h2>
-            <p>Player 1: ${scores.player1} pairs | Player 2: ${scores.player2} pairs</p>
-            <h3 id="winner-announcement">Calculating winner...</h3>
-        </div>
-    `;
-    setTimeout(announceWinner, 3000);
+    el("final-score-p1").textContent = scores.player1.toString();
+    el("final-score-p2").textContent = scores.player2.toString();
+    el("end-overlay").classList.remove("hidden");
+
+    setTimeout(() => el("end-overlay").classList.add("is-visible"), 50);
+    setTimeout(showWinnerPhase, 4000);
 }
 
 /**
- * Ermittelt den Gewinner oder Gleichstand nach kurzer Verzögerung.
+ * Wechselt nach 4 Sekunden zu Phase 2: Sieger oder Gleichstand
  */
-function announceWinner(): void {
-    const ann = document.getElementById("winner-announcement");
-    if (!ann) return;
+function showWinnerPhase(): void {
+    const el = (id: string) => document.getElementById(id) as any;
+    const isFood = currentTheme === "foods", isDraw = scores.player1 === scores.player2, isP1 = scores.player1 > scores.player2;
+    const icon = isDraw ? "draw-icon.png" : `${isFood ? "chess_" : ""}win-icon-${isP1 ? "blue" : "orange"}.png`;
 
-    if (scores.player1 > scores.player2) ann.textContent = "Player 1 Wins!";
-    else if (scores.player2 > scores.player1) ann.textContent = "Player 2 Wins!";
-    else ann.textContent = "It's a Tie!";
+    if (isFood) el("end-overlay").classList.add("phase-2-active");
+    if (isDraw && !isFood) el("confetti-bg").style.display = "none";
+
+    el("winner-subtitle").textContent = isDraw ? "It's a" : "The winner is";
+    el("winner-title").textContent = isDraw ? "DRAW" : (isP1 ? "BLUE PLAYER" : "ORANGE PLAYER");
+    el("winner-title").className = `winner-title ${isDraw ? "draw-title" : (isP1 ? "" : "orange-wins")}`;
+    el("winner-icon").src = `/public/icons/${isFood ? "food-theme" : "code-vibes-theme"}/${icon}`;
+
+    el("btn-home").onclick = () => window.location.href = "../index.html";
+    el("end-phase-1").classList.add("hidden");
+    el("end-phase-2").classList.remove("hidden");
 }
 
 /**

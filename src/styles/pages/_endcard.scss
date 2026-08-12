@@ -1,0 +1,219 @@
+/* ==========================================
+   ENDSCREEN OVERLAY BASICS
+   ========================================== */
+.end-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    overflow: hidden;
+    /* Der 2 Sekunden Fade-In */
+    pointer-events: none;
+    /* Blockiert Klicks während des Fadens */
+
+    &.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &.hidden {
+        display: none;
+    }
+}
+
+.end-phase {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 1s ease;
+    overflow: hidden;
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.score-container {
+    text-align: center;
+    margin-top: 2rem;
+
+    p {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+.score-box {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.score-player {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    img {
+        width: 20px;
+        height: auto;
+    }
+}
+
+.winner-icon-wrapper {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 200px;
+        height: auto;
+    }
+}
+
+.btn-home {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.winner-icon-img {
+    height: 500px;
+}
+
+/* ==========================================
+   THEME 1: CODE VIBES (Dunkel / Teal)
+   ========================================== */
+body.theme-code-vibes .end-overlay {
+    background-color: #333333; // Dunkelgrau aus Screenshot
+    color: #ffffff;
+    overflow: hidden;
+
+    .end-title-gameover {
+        font-size: 5rem;
+        color: #64cbb0; // Teal
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8), -2px -2px 0px rgba(0, 0, 0, 0.5); // Der 3D Effekt
+        text-transform: uppercase;
+    }
+
+    .score-box {
+        background-color: #4a5c59;
+        color: #64cbb0;
+    }
+
+    .winner-subtitle {
+        color: #ffffff;
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    .winner-title {
+        color: #64cbb0;
+        font-size: 5rem;
+        margin: 0;
+        text-transform: uppercase;
+
+        &.orange-wins {
+            color: #f2903d;
+        }
+
+        // Falls Orange gewinnt
+    }
+
+    .btn-home {
+        background: transparent;
+        border: 2px solid #64cbb0;
+        color: #ffffff;
+        padding: 0.5rem 2rem;
+    }
+
+    .confetti-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background-image: url('/public/icons/code-vibes-theme/normal-confetti.png'); // Dein Confetti-Bild
+        background-size: cover;
+    }
+}
+
+/* ==========================================
+   THEME 2: FOODS (Orange / Hell)
+   ========================================== */
+body.theme-foods .end-overlay {
+    background-color: #f2903d; // Orange aus Game-Over Screenshot
+    color: #ffffff;
+
+    /* Für Phase 2 wird der Hintergrund hell! */
+    &.phase-2-active {
+        background-color: #f7f7f7; // Helles Beige
+        color: #8b5a2b; // Braun für Text
+    }
+
+    .end-title-gameover {
+        font-size: 4rem;
+        font-weight: 300; // Dünner Font
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .score-box {
+        background-color: #ffffff;
+        color: #8b5a2b;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .winner-subtitle {
+        font-weight: 300;
+        color: #8b5a2b;
+    }
+
+    .winner-title {
+        color: #8b5a2b;
+        font-size: 3rem;
+        font-weight: 300;
+
+        &.draw-title {
+            color: #f2903d; // Orange für das Wort DRAW
+        }
+    }
+
+    .winner-icon-wrapper {
+        background-color: #f3e5d8; // Das Beige Viereck
+        padding: 2rem;
+    }
+
+    .btn-home {
+        background-color: #f2903d;
+        border: none;
+        color: #ffffff;
+        padding: 0.5rem 2rem;
+        border-radius: 10px; // Abgerundet
+    }
+
+    .confetti-bg {
+        display: none; // Kein Confetti im Food Theme
+    }
+}
