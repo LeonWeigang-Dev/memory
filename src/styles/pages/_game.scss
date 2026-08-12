@@ -198,6 +198,14 @@
 /* ==========================================
    THEME 1: CODE VIBES (Dunkel / Grün)
    ========================================== */
+
+body.theme-code-vibes .game__card.matched .game__card__face--front {
+    border: 3px solid #64cbb0;
+    box-shadow: 0 0 12px rgba(100, 203, 176, 0.6);
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15%;
+}
+
 body.theme-code-vibes {
     background-color: #333538;
     color: #ffffff;
@@ -266,6 +274,14 @@ body.theme-code-vibes {
 /* ==========================================
    THEME 2: FOODS (Hell / Orange / Braun)
    ========================================== */
+
+body.theme-foods .game__card.matched .game__card__face--front {
+    border: 3px solid #f2903d;
+    box-shadow: 0 0 12px rgba(242, 144, 61, 0.6);
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15%;
+}
+
 body.theme-foods {
     background-color: #ffffff;
     color: #935323;
