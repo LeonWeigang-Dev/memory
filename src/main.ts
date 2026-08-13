@@ -1,5 +1,4 @@
-// @ts-ignore: side-effect import of SCSS file without type declarations
-/* import './styles/main.scss'; */
+
 import { initSettings } from './ts/settings';
 import { initGame } from './ts/game';
 
@@ -12,7 +11,7 @@ if (document.getElementById("settings-form")) {
 }
 
 /**
- * Initialisiert die Event-Listener für das Spiel.
+ * Initializes the event listeners for the game.
  */
 function init() {
     const fieldRef = document.getElementById("field");

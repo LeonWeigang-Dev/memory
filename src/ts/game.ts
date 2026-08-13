@@ -1,5 +1,5 @@
 /**
- * Struktur für die Bild-Assets eines Themes (Vorder- und Rückseiten).
+ * Structure for the image assets of a theme (front and back sides).
  */
 interface ThemeAssets {
     backface: string;
@@ -7,7 +7,7 @@ interface ThemeAssets {
 }
 
 /**
- * Sammlung aller verfügbaren Themes und ihrer zugehörigen Bild-Pfade.
+ * Collection of all available themes and their associated image paths.
  */
 const themeAssets: Record<string, ThemeAssets> = {
     codeVibes: {
@@ -59,7 +59,7 @@ const themeAssets: Record<string, ThemeAssets> = {
 };
 
 /**
- * Interface für die gespeicherten Spieleinstellungen.
+ * Interface for saved game settings.
  */
 export interface GameSettings {
     theme: string;
@@ -77,7 +77,7 @@ let totalPairsNeeded = 0;
 let currentTheme = "code-vibes";
 
 /**
- * Initialisiert die Spiel-Seite, lädt Settings, setzt Variablen und startet das Spiel.
+ * Initializes the game page, loads settings, sets variables, and starts the game.
  */
 export function initGame(): void {
     const grid = document.getElementById("game-grid");
@@ -93,8 +93,8 @@ export function initGame(): void {
 }
 
 /**
- * Lädt die gespeicherten Einstellungen aus dem LocalStorage.
- * @returns Die Settings als Objekt oder null, falls keine gefunden wurden.
+ * Loads the saved settings from LocalStorage.
+ * @returns The settings as an object or null if none were found.
  */
 function loadSettings(): GameSettings | null {
     const data = localStorage.getItem("memoryGameSettings");
@@ -102,15 +102,15 @@ function loadSettings(): GameSettings | null {
 }
 
 /**
- * Leitet den Nutzer zur Settings-Seite zurück, falls keine Settings vorhanden sind.
+ * Redirects the user to the settings page if no settings are available.
  */
 function redirectToMenu(): void {
-    window.location.href = "../index.html";
+    window.location.href = "../html/settings.html";
 }
 
 /**
- * Initialisiert globale Variablen wie Startspieler und Ziel-Paare.
- * @param settings - Die aktuellen Spieleinstellungen.
+ * Initializes global variables such as starting player and target pairs.
+ * @param settings - The current game settings.
  */
 function initGameVariables(settings: GameSettings): void {
     const p = settings.player;
@@ -123,8 +123,8 @@ function initGameVariables(settings: GameSettings): void {
 }
 
 /**
- * Setzt das Theme und injiziert die passenden Icons basierend auf den Settings.
- * @param settings - Die aktuellen Spieleinstellungen.
+ * Sets the theme and injects the appropriate icons based on the settings.
+ * @param settings - The current game settings.
  */
 function applyThemeAndIcons(settings: GameSettings): void {
     const body = document.body;
@@ -137,8 +137,8 @@ function applyThemeAndIcons(settings: GameSettings): void {
 }
 
 /**
- * Aktualisiert die Bildquellen im Header je nach aktivem Theme.
- * @param isFood - True, falls das Food-Theme aktiv ist.
+ * Updates the image sources in the header depending on the active theme.
+ * @param isFood - True if the Food theme is active.
  */
 function updateHeaderIcons(isFood: boolean): void {
     const p1Icon = document.getElementById("player-1-icon") as HTMLImageElement;
@@ -147,14 +147,14 @@ function updateHeaderIcons(isFood: boolean): void {
 
     if (!p1Icon || !p2Icon || !exitIcon) return;
 
-    p1Icon.src = isFood ? "/icons/food-theme/chess_player-label-blue.png" : "/icons/code-vibes-theme/player-label-blue.png";
-    p2Icon.src = isFood ? "/icons/food-theme/chess_player-label-orange.png" : "/icons/code-vibes-theme/player-label-orange.png";
-    exitIcon.src = isFood ? "/icons/food-theme/foodTheme-exit-btn.png" : "/icons/code-vibes-theme/codeTheme-exit-btn.png";
+    p1Icon.src = isFood ? "../icons/food-theme/chess_player-label-blue.png" : "../icons/code-vibes-theme/player-label-blue.png";
+    p2Icon.src = isFood ? "../icons/food-theme/chess_player-label-orange.png" : "../icons/code-vibes-theme/player-label-orange.png";
+    exitIcon.src = isFood ? "../icons/food-theme/foodTheme-exit-btn.png" : "../icons/code-vibes-theme/codeTheme-exit-btn.png";
     updateCurrentPlayerUI();
 }
 
 /**
- * Aktualisiert das Icon des aktuell spielenden Spielers im Header.
+ * Updates the icon of the currently playing player in the header.
  */
 function updateCurrentPlayerUI(): void {
     const currIcon = document.getElementById("current-player-icon") as HTMLImageElement;
@@ -162,14 +162,14 @@ function updateCurrentPlayerUI(): void {
 
     const isFood = currentTheme === "foods";
     currIcon.src = currentPlayer === 1
-        ? (isFood ? "/icons/food-theme/chess_player-label-blue.png" : "/icons/code-vibes-theme/player-label-blue.png")
-        : (isFood ? "/icons/food-theme/chess_player-label-orange.png" : "/icons/code-vibes-theme/player-label-orange.png");
+        ? (isFood ? "../icons/food-theme/chess_player-label-blue.png" : "../icons/code-vibes-theme/player-label-blue.png")
+        : (isFood ? "../icons/food-theme/chess_player-label-orange.png" : "../icons/code-vibes-theme/player-label-orange.png");
 }
 
 /**
- * Baut das Spielfeld auf Basis der gewählten Kartenzahl auf.
- * @param gridElement - Das HTML Container-Element für das Grid.
- * @param size - Die Anzahl der Karten (16, 24 oder 36).
+ * Builds the game board based on the selected number of cards.
+ * @param gridElement - The HTML container element for the grid.
+ * @param size - The number of cards (16, 24, or 36).
  */
 function setupBoard(gridElement: HTMLElement, size: number): void {
     gridElement.className = `game__grid game__grid--${size}`;
@@ -180,9 +180,9 @@ function setupBoard(gridElement: HTMLElement, size: number): void {
 }
 
 /**
- * Erstellt gemischte Kartenpaare aus den echten Theme-Assets.
- * @param size - Die Gesamtanzahl der Karten auf dem Feld.
- * @returns Gemischtes Array mit echten Bildpfaden.
+ * Creates shuffled card pairs from the real theme assets.
+ * @param size - The total number of cards on the board.
+ * @returns Shuffled array with real image paths.
  */
 function generateCardIcons(size: number): string[] {
     const assets = getCurrentThemeAssets();
@@ -191,20 +191,22 @@ function generateCardIcons(size: number): string[] {
 }
 
 /**
- * Ermittelt basierend auf der aktiven Body-Klasse das aktuell verwendete Theme.
+ * Determines the currently used theme based on the active body class.
  * 
- * @returns Die Asset-Konfiguration für das aktive Theme.
+ * @returns The asset configuration for the active theme.
  */
 function getCurrentThemeAssets(): ThemeAssets {
     const isFoodTheme = document.body.classList.contains("theme-foods");
     return isFoodTheme ? themeAssets.foods : themeAssets.codeVibes;
 }
 
+import { getCardTemplate } from './templates';
+
 /**
- * Rendert das Memory-Spielfeld dynamisch in das übergebene Grid-Element.
+ * Dynamically renders the memory game board into the provided grid element.
  * 
- * @param grid - Das HTML-Element, welches das Karten-Grid repräsentiert.
- * @param icons - Ein Array von Bildpfaden, die als Karten-Vorderseiten verwendet werden sollen.
+ * @param grid - The HTML element that represents the card grid.
+ * @param icons - An array of image paths to be used as card front sides.
  */
 function renderCards(grid: HTMLElement, icons: string[]): void {
     grid.innerHTML = "";
@@ -215,17 +217,7 @@ function renderCards(grid: HTMLElement, icons: string[]): void {
         card.classList.add("game__card");
         card.dataset.icon = icon;
 
-        card.innerHTML = `
-            <div class="game__card__inner">
-                <!-- Theme-abhängige Rückseite -->
-                <div class="game__card__face game__card__face--back" style="background-image: url('${assets.backface}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
-                
-                <!-- Theme-abhängige Vorderseite (Icon) -->
-                <div class="game__card__face game__card__face--front">
-                    <img src="${icon}" alt="Card Icon" class="game__card-img">
-                </div>
-            </div>
-        `;
+        card.innerHTML = getCardTemplate(assets.backface, icon);
 
         card.addEventListener("click", () => handleCardClick(card));
         grid.appendChild(card);
@@ -233,8 +225,8 @@ function renderCards(grid: HTMLElement, icons: string[]): void {
 }
 
 /**
- * Verarbeitet den Klick auf eine einzelne Karte.
- * @param card - Das angeklickte Karten-Element.
+ * Handles the click on a single card.
+ * @param card - The clicked card element.
  */
 function handleCardClick(card: HTMLElement): void {
     if (isChecking || card.classList.contains("is-flipped") || card.classList.contains("matched")) return;
@@ -244,16 +236,16 @@ function handleCardClick(card: HTMLElement): void {
 }
 
 /**
- * Dreht eine Karte optisch um (fügt nur die Klasse hinzu).
- * @param card - Das umzudrehende Karten-Element.
+ * Flips a card visually (only adds the class).
+ * @param card - The card element to flip.
  */
 function flipCard(card: HTMLElement): void {
     card.classList.add("is-flipped");
 }
 
 /**
- * Speichert die aufgedeckte Karte und prüft auf Paare, wenn 2 offen sind.
- * @param card - Das aktuell aufgedeckte Karten-Element.
+ * Stores the revealed card and checks for pairs when 2 are open.
+ * @param card - The currently revealed card element.
  */
 function trackFlippedCard(card: HTMLElement): void {
     flippedCards.push(card);
@@ -264,7 +256,7 @@ function trackFlippedCard(card: HTMLElement): void {
 }
 
 /**
- * Überprüft, ob die beiden aufgedeckten Karten übereinstimmen.
+ * Checks if the two revealed cards match.
  */
 function checkForMatch(): void {
     const [c1, c2] = flippedCards;
@@ -273,7 +265,7 @@ function checkForMatch(): void {
 }
 
 /**
- * Verarbeitet ein gefundenes Paar (Punkte & Siegprüfung).
+ * Processes a found pair (points & win check).
  */
 function handleSuccessfulMatch(): void {
     if (currentPlayer === 1) scores.player1++;
@@ -286,7 +278,7 @@ function handleSuccessfulMatch(): void {
 }
 
 /**
- * Verarbeitet einen Fehlversuch (Dreht Karten nach kurzer Pause zurück).
+ * Processes a failed attempt (flips cards back after a short pause).
  */
 function handleFailedMatch(): void {
     setTimeout(() => {
@@ -299,14 +291,14 @@ function handleFailedMatch(): void {
 }
 
 /**
- * Markiert Karten als festes Paar.
+ * Marks cards as a permanent pair.
  */
 function markCardsAsMatched(): void {
     flippedCards.forEach(card => card.classList.add("matched"));
 }
 
 /**
- * Setzt den Zug-Status zurück.
+ * Resets the turn state.
  */
 function resetTurnState(): void {
     flippedCards = [];
@@ -314,7 +306,7 @@ function resetTurnState(): void {
 }
 
 /**
- * Wechselt den aktiven Spieler.
+ * Switches the active player.
  */
 function switchPlayer(): void {
     currentPlayer = currentPlayer === 1 ? 2 : 1;
@@ -322,7 +314,7 @@ function switchPlayer(): void {
 }
 
 /**
- * Aktualisiert die Punktetabelle im UI.
+ * Updates the score table in the UI.
  */
 function updateScoreUI(): void {
     const p1 = document.getElementById("p1-points");
@@ -332,7 +324,7 @@ function updateScoreUI(): void {
 }
 
 /**
- * Prüft, ob das Spiel beendet ist (alle Paare gefunden).
+ * Checks if the game is over (all pairs found).
  */
 function checkGameOver(): void {
     matchedPairs++;
@@ -342,7 +334,7 @@ function checkGameOver(): void {
 }
 
 /**
- * Startet Phase 1: Den Game Over Screen mit Fade-In
+ * Starts Phase 1: The game over screen with fade-in.
  */
 function startEndSequence(): void {
     const el = (id: string) => document.getElementById(id) as any;
@@ -357,7 +349,7 @@ function startEndSequence(): void {
 }
 
 /**
- * Wechselt nach 4 Sekunden zu Phase 2: Sieger oder Gleichstand
+ * Switches to Phase 2 after 4 seconds: Winner or draw.
  */
 function showWinnerPhase(): void {
     const el = (id: string) => document.getElementById(id) as any;
@@ -370,7 +362,7 @@ function showWinnerPhase(): void {
     el("winner-subtitle").textContent = isDraw ? "It's a" : "The winner is";
     el("winner-title").textContent = isDraw ? "DRAW" : (isP1 ? "BLUE PLAYER" : "ORANGE PLAYER");
     el("winner-title").className = `winner-title ${isDraw ? "draw-title" : (isP1 ? "" : "orange-wins")}`;
-    el("winner-icon").src = `/public/icons/${isFood ? "food-theme" : "code-vibes-theme"}/${icon}`;
+    el("winner-icon").src = `../icons/${isFood ? "food-theme" : "code-vibes-theme"}/${icon}`;
 
     el("btn-home").onclick = () => window.location.href = "../index.html";
     el("end-phase-1").classList.add("hidden");
@@ -378,7 +370,7 @@ function showWinnerPhase(): void {
 }
 
 /**
- * Initialisiert die Event-Listener für den Exit-Game-Dialog.
+ * Initializes the event listeners for the exit game dialog.
  */
 export function initExitDialog(): void {
     const dialog = document.getElementById("exit-dialog") as HTMLDialogElement | null;

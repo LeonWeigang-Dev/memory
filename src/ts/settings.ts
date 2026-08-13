@@ -1,5 +1,5 @@
 /**
- * Initialisiert die Event-Listener für das Einstellungen-Formular.
+ * Initializes the event listeners for the settings form.
  */
 export function initSettings(): void {
     const form = document.getElementById("settings-form") as HTMLFormElement | null;
@@ -10,20 +10,23 @@ export function initSettings(): void {
 
     form.addEventListener("change", () => handleFormChange(form, btn, preview));
     form.addEventListener("submit", (e: Event) => handleFormSubmit(e, form));
+
+    setupThemeHover(form, preview);
+    loadSavedSettings(form);
 }
 
 /**
- * Verarbeitet Änderungen im Formular und aktualisiert Vorschau sowie Button-Status.
+ * Handles changes in the form and updates preview and button status.
  *
- * @param form - Das Einstellungen-Formularelement.
- * @param btn - Der Start-Button.
- * @param preview - Das Vorschaubild-Element für das Theme.
+ * @param form - The settings form element.
+ * @param btn - The start button.
+ * @param preview - The preview image element for the theme.
  */
 function handleFormChange(form: HTMLFormElement, btn: HTMLButtonElement, preview: HTMLImageElement): void {
     const data = new FormData(form);
     const [theme, player, size] = [data.get("theme"), data.get("player"), data.get("boardSize")];
 
-    if (theme) preview.src = `/imgs/preview-${theme}.png`;
+    if (theme) preview.src = `../imgs/preview-${theme}.png`;
     if (theme) updateSummaryText("theme", form);
     if (player) updateSummaryText("player", form);
     if (size) updateSummaryText("boardSize", form);
@@ -32,10 +35,10 @@ function handleFormChange(form: HTMLFormElement, btn: HTMLButtonElement, preview
 }
 
 /**
- * Speichert die Formulardaten im LocalStorage und leitet zum Spiel weiter.
+ * Saves the form data in LocalStorage and redirects to the game.
  *
- * @param e - Das Event beim Absenden des Formulars.
- * @param form - Das Einstellungen-Formularelement.
+ * @param e - The event on form submission.
+ * @param form - The settings form element.
  */
 function handleFormSubmit(e: Event, form: HTMLFormElement): void {
     e.preventDefault();
@@ -45,10 +48,10 @@ function handleFormSubmit(e: Event, form: HTMLFormElement): void {
 }
 
 /**
- * Aktualisiert den Übersichtstext eines ausgewählten Formularfelds.
+ * Updates the summary text of a selected form field.
  *
- * @param inputName - Name des Formularfelds (z. B. "theme", "player", "boardSize").
- * @param form - Das Einstellungen-Formularelement.
+ * @param inputName - Name of the form field (e.g., "theme", "player", "boardSize").
+ * @param form - The settings form element.
  */
 function updateSummaryText(inputName: string, form: HTMLFormElement): void {
     const input = form.querySelector(`input[name="${inputName}"]:checked`) as HTMLInputElement | null;
@@ -59,4 +62,43 @@ function updateSummaryText(inputName: string, form: HTMLFormElement): void {
     const summarySpan = document.getElementById(summaryId);
 
     if (label && summarySpan) summarySpan.textContent = label.textContent;
+}
+
+/**
+ * Sets up the hover effects for the theme preview.
+ *
+ * @param form - The settings form element.
+ * @param preview - The preview image element for the theme.
+ */
+function setupThemeHover(form: HTMLFormElement, preview: HTMLImageElement): void {
+    const inputs = form.querySelectorAll('input[name="theme"]') as NodeListOf<HTMLInputElement>;
+
+    inputs.forEach(input => {
+        const label = form.querySelector(`label[for="${input.id}"]`);
+        if (!label) return;
+
+        label.addEventListener("mouseenter", () => preview.src = `/imgs/preview-${input.value}.png`);
+        label.addEventListener("mouseleave", () => {
+            const checked = form.querySelector('input[name="theme"]:checked') as HTMLInputElement;
+            if (checked) preview.src = `../imgs/preview-${checked.value}.png`;
+        });
+    });
+}
+
+/**
+ * Loads saved settings from local storage and pre-selects form values.
+ * 
+ * @param form - The settings HTML form element.
+ */
+function loadSavedSettings(form: HTMLFormElement): void {
+    const saved = localStorage.getItem("memoryGameSettings");
+    if (!saved) return;
+
+    const settings = JSON.parse(saved);
+    Object.entries(settings).forEach(([key, value]) => {
+        const input = form.querySelector(`input[name="${key}"][value="${value}"]`);
+        if (input) (input as HTMLInputElement).checked = true;
+    });
+
+    form.dispatchEvent(new Event("change"));
 }
