@@ -1,7 +1,7 @@
 <h1 align="center">Memory Game</h1>
 
 <p align="center"> 
-  <img src="public/imgs/preview-code-vibes.png" width="100%" alt="Memory Game Preview"> 
+  <img src="public/imgs/preview-img.png" width="100%" alt="Memory Game Preview"> 
 </p> 
 
 <p align="center"> 
@@ -9,7 +9,7 @@
 </p> 
 
 <p align="center"> 
-  <a href="https://deine-website.de/memory/">Play Live</a> • <a href="#getting-started">Setup</a> 
+  <a href="https://leonweigang.developerakademie.net/memory/index.html">Play Live</a> • <a href="#getting-started">Setup</a> 
 </p> 
 
 <br> <br>
@@ -102,5 +102,5 @@ Memory Game
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/dein-username/memory-game.git](https://github.com/dein-username/memory-game.git)
+   git clone [https://github.com/LeonWeigang-Dev/memory](https://github.com/dein-username/memory-game.git)
    cd memory-game
