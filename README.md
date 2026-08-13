@@ -12,7 +12,7 @@
 </p> 
 
 <p align="center"> 
-  <a href="https://leonweigang.developerakademie.net/memory/index.html">Play Live</a> • <a href="#getting-started">Setup</a> 
+  <a href="https://leonweigang.developerakademie.net/memory/index.html">Play Live</a> 
 </p> 
 
 <br> <br>
@@ -54,7 +54,7 @@ No heavy UI frameworks. Pure, performant TypeScript & SCSS. <br> <br>
 <br>
 
 <strong> Live Demo <br> </strong>
-[Play the Game Live](https://deine-website.de/memory/)
+[Play the Game Live](https://leonweigang.developerakademie.net/memory/index.html)
 
 <br>
 
