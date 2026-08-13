@@ -106,4 +106,7 @@ Memory Game
 1. **Clone the repository**
    ```bash
    git clone [https://github.com/LeonWeigang-Dev/memory]
-   cd memory-game
+   cd memory
+   npm install
+   npm run dev
+   ```
