@@ -77,7 +77,7 @@ function setupThemeHover(form: HTMLFormElement, preview: HTMLImageElement): void
         const label = form.querySelector(`label[for="${input.id}"]`);
         if (!label) return;
 
-        label.addEventListener("mouseenter", () => preview.src = `/imgs/preview-${input.value}.png`);
+        label.addEventListener("mouseenter", () => preview.src = `../imgs/preview-${input.value}.png`);
         label.addEventListener("mouseleave", () => {
             const checked = form.querySelector('input[name="theme"]:checked') as HTMLInputElement;
             if (checked) preview.src = `../imgs/preview-${checked.value}.png`;
