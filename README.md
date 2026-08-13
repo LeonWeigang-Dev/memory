@@ -3,6 +3,9 @@
 <p align="center"> 
   <img src="public/imgs/preview-img.png" width="100%" alt="Memory Game Preview"> 
 </p> 
+<p align="center"> 
+  <img src="public/imgs/preview-img-02.png" width="100%" alt="Memory Game Preview 02"> 
+</p> 
 
 <p align="center"> 
   <strong>A modern, interactive browser Memory game built with TypeScript, SCSS, and Vite</strong> 
@@ -102,5 +105,5 @@ Memory Game
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/LeonWeigang-Dev/memory](https://github.com/dein-username/memory-game.git)
+   git clone [https://github.com/LeonWeigang-Dev/memory]
    cd memory-game
